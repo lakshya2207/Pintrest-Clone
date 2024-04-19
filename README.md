@@ -1,0 +1,2 @@
+# Pintrest-Clone
+ clone 
