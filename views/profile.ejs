@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/profile.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <a href="/newpost" class="new">+</a> -->
+  <div class="card">
+    <div class="card-header"
+      style="background-image: url(https://res.cloudinary.com/dj14cmwoz/image/upload/v1491077482/profile-card/images/profile-picture.png)">
+      <div class="card-header-bar">
+        <a href="#" class="btn-message"><span class="sr-only">Message</span></a>
+        <a href="#" class="btn-menu"><span class="sr-only">Menu</span></a>
+      </div>
+
+      <div class="card-header-slanted-edge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200">
+          <path class="polygon" d="M-20,200,1000,0V200Z" />
+        </svg>
+        <a href="#" class="btn-follow"><span class="sr-only">Follow</span></a>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <!-- <h3><%= { username, email, password, fullname, posts } = user %> </h3> -->
+      <h2>
+        <%= user.fullname %>
+      </h2>
+      <h1>Welcome <%= user.username %>
+      </h1>
+      <p>@<%= user.email %>
+      </p>
+      <p>Posts: <%= user.posts.length %>
+      </p>
+      <div class="social-accounts">
+        <a href="#"><img
+            src="https://res.cloudinary.com/dj14cmwoz/image/upload/v1491077480/profile-card/images/dribbble.svg"
+            alt=""><span class="sr-only">Dribbble</span></a>
+        <a href="#"><img
+            src="https://res.cloudinary.com/dj14cmwoz/image/upload/v1491077480/profile-card/images/twitter.svg"
+            alt=""><span class="sr-only">Twitter</span></a>
+        <a href="#"><img
+            src="https://res.cloudinary.com/dj14cmwoz/image/upload/v1491077480/profile-card/images/instagram.svg"
+            alt=""><span class="sr-only">Instagram</span></a>
+      </div>
+    </div>
+
+  </div>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <input type="name" name="postText" placeholder="Caption">
+      <button type="submit">Upload</button>
+    </form>
+    
+  <div class="goto">
+    <a class="feed" href="/feed">Feed</a>
+    <a class="logout" href="/logout">Logout</a>
+  </div>
+
+  <div class="container">
+    <div class="cards">
+      <% user.posts.forEach(function(post){%>
+        <div class="card1" style="width: 18rem;">
+        <img src="/images/uploads/<%= post.image%>" alt="...">
+        <h5><%=post.postText%></h5>
+      </div>
+      <%}) %>
+    </div>
+  </div>
+  
+</body>
+
+</html>
